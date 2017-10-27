@@ -1,7 +1,7 @@
 #!/bin/bash
 FILE=$1
 
-header="conn,latency,tps_inc,tps_exc"
+header="conn,latency,tps_inc,tps_exc,duration_secs,count_proc"
 
 printf "${header}"
 
@@ -22,7 +22,15 @@ do
   elif [[ $lin =~ excluding ]]
   then
     exc=$(echo $lin | cut -d ' ' -f3)
-    printf "$exc"
+    printf "$exc,"
+  elif [[ $lin =~ duration ]]
+  then
+    dura=$(echo $lin | cut -d ' ' -f2)
+    printf "$dura,"
+  elif [[ $lin =~ processed ]]
+  then
+    proc=$(echo $lin | cut -d ' ' -f6)
+    printf "${proc}"
   fi
 done < $FILE
 
