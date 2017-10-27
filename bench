@@ -7,11 +7,16 @@ PGDB="ongres"
 FULLLOG="bench.log"
 SECS=${1:-300}
 
+
+function pause(){ 
+  sleep 1
+}
+
 function test(){
-  for conns in 100 300 500 700
+  for conns in 100 200 300 500 700
   do
     pgbench -n -r --time=${SECS} -c ${conns} ${PGDB} >> ${FULLLOG}_${TEST} 
-    sleep 1
+    pause
     fuckcache
   done
 }
@@ -36,13 +41,14 @@ function vacan(){
 
 function rest(){
   sudo service postgresql restart
+  pause
 }
 
 setdef
 rest
 vacan
 test
-sleep 2
+pause
 settuned
 rest
 vacan
