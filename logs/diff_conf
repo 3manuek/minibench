@@ -5,7 +5,6 @@ hba_file = '/etc/postgresql/10/main/pg_hba.conf'        # hos |	hba_file = '/etc
 ident_file = '/etc/postgresql/10/main/pg_ident.conf'    # ide |	ident_file = '/etc/postgresql/10/main/pg_ident.conf'	# ide
                                         # (change requires re |						# (change requires re
 external_pid_file = '/var/run/postgresql/10-main.pid'         |	external_pid_file = '/var/run/postgresql/10-main.pid'	
-							      >						# (change requires re
 #port = 5432				# (change requires re |	port = 5432				# (change requires re
 #unix_socket_directories = '/tmp'	# comma-separated lis |	unix_socket_directories = '/var/run/postgresql'	# comma-separ
 #ssl = off						      |	ssl = on
@@ -14,7 +13,6 @@ external_pid_file = '/var/run/postgresql/10-main.pid'         |	external_pid_fil
 #shared_buffers = 32MB			# min 128kB	      |	shared_buffers = 2048MB			# min 128kB
 #work_mem = 4MB				# min 64kB	      |	work_mem = 4MB				# min 64kB
 #maintenance_work_mem = 64MB		# min 1MB	      |	maintenance_work_mem = 768MB		# min 1MB
-maintenance_work_mem = 768MB				      <
 #dynamic_shared_memory_type = posix	# the default is the  |	dynamic_shared_memory_type = posix	# the default is the 
 #bgwriter_flush_after = 0		# measured in pages,  |	#bgwriter_flush_after = 512kB		# measured in pages, 
 #wal_level = replica			# minimal, replica, o |	wal_level = replica			# minimal, replica, o
